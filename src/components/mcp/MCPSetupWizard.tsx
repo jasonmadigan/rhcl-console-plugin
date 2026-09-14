@@ -375,6 +375,7 @@ const MCPSetupWizard: React.FC = () => {
                 <CardBody>
                   <div className="kuadrant-mcp-embedded-form">
                     <GatewayCreatePage
+                      isEmbedded
                       initialResource={newGatewayResource ?? undefined}
                       onFormChange={(resource, isValid) => {
                         // Pin the namespace to the frozen wizard namespace so the
@@ -500,6 +501,7 @@ const MCPSetupWizard: React.FC = () => {
                 <CardBody>
                   <div className="kuadrant-mcp-embedded-form">
                     <HTTPRouteCreatePage
+                      isEmbedded
                       extraGateways={draftGateways}
                       reconcileParentRefs
                       initialResource={newRouteResource ?? undefined}
