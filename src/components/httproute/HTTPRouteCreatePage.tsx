@@ -73,6 +73,8 @@ interface HTTPRouteCreatePageProps {
   // refresh stale selections when the draft Gateway changes upstream). Off by
   // default so the standalone page is untouched.
   reconcileParentRefs?: boolean;
+  // Optional predicate to restrict which Gateways can be selected as parent references.
+  gatewayFilter?: (gateway: GatewayForSelect) => boolean;
 }
 
 const HTTPRouteCreatePage: React.FC<HTTPRouteCreatePageProps> = ({
@@ -80,6 +82,7 @@ const HTTPRouteCreatePage: React.FC<HTTPRouteCreatePageProps> = ({
   extraGateways,
   initialResource,
   reconcileParentRefs,
+  gatewayFilter,
 }) => {
   const { t } = useTranslation('plugin__kuadrant-console-plugin');
   const [createView, setCreateView] = React.useState<'form' | 'yaml'>('form');
@@ -502,6 +505,7 @@ const HTTPRouteCreatePage: React.FC<HTTPRouteCreatePageProps> = ({
                   onChange={setParentRefs}
                   extraGateways={extraGateways}
                   reconcileParentRefs={reconcileParentRefs}
+                  gatewayFilter={gatewayFilter}
                 />
 
                 <FormGroup
